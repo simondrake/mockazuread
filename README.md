@@ -9,6 +9,13 @@ If [Azurite issue 2373](https://github.com/Azure/Azurite/issues/2373) is ever im
 * This service has only been tested with the Go SDK
 * The certificates were generated using [mkcert](https://github.com/FiloSottile/mkcert). You may need to install and run `mkcert -install` for it to work.
 
+# Set-up
+
+Because the Azure SDK expects a valid TLS certificate, the following set-up steps are needed:
+
+* Install [mkcert](https://github.com/FiloSottile/mkcert)
+* `CAROOT=$(pwd)/certs/rootCA/ mkcert -install`
+
 # Example
 
 * Run the provided `docker-compose.yaml` file - `docker-compose up -d`
