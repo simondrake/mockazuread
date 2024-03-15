@@ -15,7 +15,6 @@ COPY go.sum .
 RUN go mod download
 
 # Copy the code into the container
-ADD certs ./build
 ADD internal ./internal
 COPY main.go .
 

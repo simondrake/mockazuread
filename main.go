@@ -18,7 +18,7 @@ func init() {
 	enableDebug := flag.Bool("debug", false, "whether to enable debug mode")
 	flag.Parse()
 
-	opts := &slog.HandlerOptions{}
+	opts := &slog.HandlerOptions{AddSource: true}
 	if *enableDebug {
 		opts.Level = slog.LevelDebug
 	}
