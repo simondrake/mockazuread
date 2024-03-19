@@ -2,6 +2,9 @@
 run:
 	go run .
 
+.PHONY: docker-login
+docker-login:
+	docker login
 
 .PHONY: docker-build
 docker-build:
@@ -18,7 +21,7 @@ docker-push:
 	docker push simondrake/mockazuread:latest
 
 .PHONY: docker-all
-docker-all: docker-build docker-tag docker-push
+docker-all: docker-login docker-build docker-tag docker-push
 	@echo "================================================"
 	@echo "Docker image has been built, tagged and pushed"
 	@echo "================================================"

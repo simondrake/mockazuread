@@ -1,0 +1,9 @@
+[server]
+port = 8080
+
+[connection]
+tenantid = "mytenantid"
+endpoint = "https://127.0.0.1:8080"
+
+[authentication]
+signingkey = "verysecret"

@@ -36,11 +36,7 @@ type Handler struct {
 }
 
 func New(opts ...HandlerOptions) *Handler {
-	h := &Handler{
-		signingKey: "verysecret",
-		tenantID:   "mytenantid",
-		endpoint:   "https://127.0.0.1:8000",
-	}
+	h := &Handler{}
 
 	for _, o := range opts {
 		o(h)

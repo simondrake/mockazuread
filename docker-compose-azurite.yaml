@@ -1,0 +1,11 @@
+---
+version: "3"
+services:
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: azurite
+    command: ["azurite-blob", "--blobHost", "0.0.0.0", "--oauth", "basic" ,"--cert", "/workspace/cert.pem", "--key", "/workspace/key.pem"]
+    ports:
+      - 10000:10000
+    volumes:
+      - /tmp/mockazurecerts:/workspace
