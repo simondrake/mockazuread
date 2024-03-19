@@ -53,7 +53,7 @@ func main() {
 	}
 
 	if err := k.Load(file.Provider("config.toml"), toml.Parser()); err != nil {
-		log.Fatalf("error loading config: %v", err)
+		slog.Error("error loading config", slog.Any("error", err))
 	}
 
 	if err := k.Load(env.Provider("MOCKAZURE_", ".", func(s string) string {
