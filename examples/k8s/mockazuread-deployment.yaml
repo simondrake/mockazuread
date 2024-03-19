@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mockazuread
+spec:
+  selector:
+    matchLabels:
+      app: mockazuread
+  template:
+    metadata:
+      labels:
+        name: mockazuread
+        app: mockazuread
+    spec:
+      containers:
+        - image: simondrake/mockazuread:latest
+          name: mockazuread
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - mountPath: /certs
+              name: azurite-config
+          env:
+            - name: MOCKAZURE_CONNECTION_CERTDIRECTORY
+              value: /certs
+            - name: MOCKAZURE_CONNECTION_CERTNAME
+              value: cert.pem
+            - name: MOCKAZURE_CONNECTION_KEYNAME
+              value: key.pem
+            - name: MOCKAZURE_CONNECTION_ENDPOINT
+              value: https://{minikubeIP}:30750
+            - name: MOCKAZURE_AUTHENTICATION_SIGNINGKEY
+              value: wibblewobble
+      restartPolicy: Always
+      volumes:
+        - name: azurite-config
+          configMap:
+            name: azurite

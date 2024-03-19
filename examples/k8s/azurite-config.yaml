@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: azurite
+data:
+  key.pem: |-
+    -----BEGIN PRIVATE KEY-----
+    ## TODO - Fill in
+    -----END PRIVATE KEY-----
+  cert.pem: |-
+    -----BEGIN CERTIFICATE-----
+    ## TODO - Fill in
+    -----END CERTIFICATE-----
+  rootca.pem: |-
+    -----BEGIN CERTIFICATE-----
+    ## TODO - Fill in
+    -----END CERTIFICATE-----
+  rootca-key.pem: |-
+    -----BEGIN PRIVATE KEY-----
+    ## TODO - Fill in
+    -----END PRIVATE KEY-----

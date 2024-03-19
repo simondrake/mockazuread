@@ -43,11 +43,13 @@ func main() {
 	k := koanf.New(".")
 
 	if err := k.Load(confmap.Provider(map[string]interface{}{
-		"server.port":              8080,
-		"connection.tenantid":      "mytenantid",
-		"connection.certdirectory": "/certs",
-		"connection.certname":      "cert.pem",
-		"connection.keyname":       "key.pem",
+		"server.port":               8080,
+		"connection.tenantid":       "mytenantid",
+		"connection.endpoint":       "https://127.0.0.1:8080",
+		"connection.certdirectory":  "/certs",
+		"connection.certname":       "cert.pem",
+		"connection.keyname":        "key.pem",
+		"authentication.signingkey": "supersecret",
 	}, "."), nil); err != nil {
 		log.Fatalf("error setting config defaults: %v", err)
 	}

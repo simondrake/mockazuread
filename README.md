@@ -41,3 +41,11 @@ MOCKAZURE_CONNECTION_CERTDIRECTORY=/tmp/mockazurecerts MOCKAZURE_CONNECTION_CERT
 ```
 
 * You should then be able to run the example by running `cd examples/simple; go run main.go`
+
+# AZ CLI
+
+If you need to use the [az CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli), for example to query the data that has been stored, you can use the `REQUESTS_CA_BUNDLE` environment variable pointed to the mkcert Root CA file. For example:
+
+```bash
+$ REQUESTS_CA_BUNDLE=~/.local/share/mkcert/rootCA.pem az storage blob download --container-name test-data --name "path/to/data" --connection-string "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://minikube:30700/devstoreaccount1;"
+```

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: azurite
+spec:
+  selector:
+      matchLabels:
+          app: azurite
+  template:
+    metadata:
+      labels:
+        name: azurite
+        app: azurite
+    spec:
+      containers:
+      - image: mcr.microsoft.com/azure-storage/azurite
+        name: azurite
+        command:
+          - "azurite-blob"
+        args:
+          - "--blobHost"
+          - "0.0.0.0"
+          - "--oauth"
+          - "basic"
+          - "--cert"
+          - "/certs/cert.pem"
+          - "--key"
+          - "/certs/key.pem"
+        ports:
+        - name: http
+          containerPort: 10000
+        volumeMounts:
+          - mountPath: /certs
+            name: azurite-config
+      restartPolicy: Always
+      volumes:
+        - name: azurite-config
+          configMap:
+            name: azurite
